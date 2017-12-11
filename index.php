@@ -6,8 +6,6 @@
 </head>
 <body>
 
-<?php echo "<p> hello world</p>"; ?>
-
 <?php 
 
 	// 1 day = 86400
