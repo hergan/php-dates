@@ -45,7 +45,7 @@
 
 	$holidaysOff = array($newYearDay, $goodFriday, $memorialDay, $independenceDay, $laborDay, $thanksgivingDay, $fridayAfterThanksgiving, $chirstmasEve, $chirstmasDay, $dayAfterChirstmas);
 
-	//calculates second thurs in UNIX
+	//calculates seminar dates in UNIX
 	$seminarDate1 = date('U', strtotime("first thursday of this month"));
 	$seminarDate2 = date('U', strtotime("second tuesday of this month"));
 	$seminarDate3 = date('U', strtotime("second thursday of this month"));
@@ -70,12 +70,11 @@
 		echo date_format($formDate, "l, F j") . "<br>";
 	}
 
-
-validate($seminarDate1);
-validate($seminarDate2);
-validate($seminarDate3);
-validate($seminarDate4);
-validate($seminarDate5);
+	validate($seminarDate1);
+	validate($seminarDate2);
+	validate($seminarDate3);
+	validate($seminarDate4);
+	validate($seminarDate5);
 
 ?>
 
