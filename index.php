@@ -28,7 +28,7 @@
 	//cacls Labor Day
 	$laborDay = date('U', strtotime("first monday of september"));
 
-	//cacls Thanksgiving Day
+	//cacls Thanksgiving Da
 	$thanksgivingDay = date('U', strtotime("fourth thursday of november"));
 
 	//cacls Friday after Thanksgiving
@@ -46,19 +46,36 @@
 	$holidaysOff = array($newYearDay, $goodFriday, $memorialDay, $independenceDay, $laborDay, $thanksgivingDay, $fridayAfterThanksgiving, $chirstmasEve, $chirstmasDay, $dayAfterChirstmas);
 
 	//calculates second thurs in UNIX
-	$secondThurs = date('U', strtotime("second thursday of this month"));
+	$seminarDate1 = date('U', strtotime("first thursday of this month"));
+	$seminarDate2 = date('U', strtotime("second tuesday of this month"));
+	$seminarDate3 = date('U', strtotime("second thursday of this month"));
+	$seminarDate4 = date('U', strtotime("third tuesday of this month"));			
+	$seminarDate5 = date('U', strtotime("third thursday of this month"));	
 
-	// compares $secondThurs var to holidaysOff array 
-	if (array_search ($secondThurs, $holidaysOff))
-	{
-		echo "Office is closed";
-	}
-	else 
-	{
-		$formDate = date_create_from_format("U",$secondThurs);
-		echo date_format($formDate, "l, F j");
+	function validate($seminarDate) {	
+		while($date_flag == 0)
+		{
+			$key = array_search($seminarDate, $holidaysOff);
+			// is it Tuesday or Thursday
+
+			if (($key == FALSE) && (date("N", $seminarDate) != 6) && (date("N", $seminarDate) != 7))
+				$date_flag = 1;
+			else
+			{
+				$date_flag = 0;
+				$seminarDate = date('U', strtotime('+86400 seconds', $seminarDate));
+			}
+		}
+		$formDate = date_create_from_format("U",$seminarDate);
+		echo date_format($formDate, "l, F j") . "<br>";
 	}
 
+
+validate($seminarDate1);
+validate($seminarDate2);
+validate($seminarDate3);
+validate($seminarDate4);
+validate($seminarDate5);
 
 ?>
 
